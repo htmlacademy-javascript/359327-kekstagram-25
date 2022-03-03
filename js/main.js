@@ -1,7 +1,7 @@
-const comment = 'Красивая фотография'
-const minNumber = 1
-const maxNumber = 10
-const MAX_STRING_LENGTH = 140
+const comment = 'Красивая фотография';
+const minNumber = 1;
+const maxNumber = 10;
+const MAX_STRING_LENGTH = 140;
 
 // Ссылка от куда взял скрипт https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 function getRandomIntInclusive(min, max) {
@@ -18,7 +18,7 @@ function getRandomIntInclusive(min, max) {
 }
 
 function checkLengthString(line, maxStringLength) {
-  return line.length < maxStringLength
+  return line.length < maxStringLength;
 }
 
 getRandomIntInclusive(minNumber, maxNumber);
