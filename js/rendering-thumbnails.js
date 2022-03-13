@@ -1,4 +1,4 @@
-import {getPhotosArr} from "./data.js";
+import {getPhotosArr} from './data.js';
 
 const sectionPictures = document.querySelector('.pictures');
 const templatePicture = document.querySelector('#picture').content.querySelector('a');
