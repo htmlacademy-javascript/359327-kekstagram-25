@@ -1,3 +1,4 @@
+import {renderPhotos} from './rendering-thumbnails.js';
 import {getPhotosArr} from './data.js';
 
-getPhotosArr(25);
+renderPhotos(getPhotosArr(25));
