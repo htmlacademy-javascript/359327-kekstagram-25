@@ -4,7 +4,7 @@ const maxNumber = 10;
 const MAX_STRING_LENGTH = 140;
 
 // Возвращает случайное целое число из переданного диапазона включительно
-function getRandomIntInclusive(min, max) {
+export function getRandomIntInclusive(min, max) {
   max = Math.floor(max);
   min = Math.floor(min);
   if (min < 0) {
@@ -18,11 +18,10 @@ function getRandomIntInclusive(min, max) {
 }
 
 // Проверка максимальной длины строки
-function checkLengthString(line, maxStringLength) {
+export function checkLengthString(line, maxStringLength) {
   return line.length < maxStringLength;
 }
 
 getRandomIntInclusive(minNumber, maxNumber);
 checkLengthString(comment, MAX_STRING_LENGTH);
 
-export {getRandomIntInclusive, checkLengthString};

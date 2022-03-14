@@ -1,13 +1,21 @@
-import {getPhotosArr} from './data.js';
-
 const sectionPictures = document.querySelector('.pictures');
 const templatePicture = document.querySelector('#picture').content.querySelector('a');
 
-
-getPhotosArr(25).forEach((photo) => {
+function getPhotoElement(data){
   const photoElement = templatePicture.cloneNode(true);
-  photoElement.querySelector('img').setAttribute('src', photo.url);
-  photoElement.querySelector('.picture__likes').textContent = photo.likes;
-  photoElement.querySelector('.picture__comments').textContent = photo.comments[0].id;
-  sectionPictures.appendChild(photoElement);
-});
+  const img = photoElement.querySelector('img');
+  const pictureLikes = photoElement.querySelector('.picture__likes');
+  const pictureComments = photoElement.querySelector('.picture__comments');
+  img.setAttribute('src', data.url);
+  pictureLikes.textContent = data.likes;
+  pictureComments.textContent = data.comments[0].id;
+  return photoElement;
+}
+
+export function renderPhotos(photosArr){
+  photosArr.forEach((photo) => {
+    const filledPhoto = getPhotoElement(photo);
+    sectionPictures.appendChild(filledPhoto);
+  });
+}
+

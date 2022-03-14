@@ -61,9 +61,6 @@ function createPhoto() {
 }
 
 //Создает массив данных из объектов с параметрами для фотографий. Кол-во обьектов указываем в number
-function getPhotosArr (number){
+export function getPhotosArr (number){
   return  new Array(number).fill(null).map(() => createPhoto());
-
 }
-
-export {getPhotosArr};
