@@ -19,7 +19,7 @@ export function renderPhotos(photosArr){
     const filledPhoto = getPhotoElement(photo);
     sectionPictures.appendChild(filledPhoto).addEventListener('click', () => {
       openFullScreenPhoto(photo);
-    });;
+    });
   });
 }
 
