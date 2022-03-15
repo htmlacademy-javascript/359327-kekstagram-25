@@ -1,3 +1,5 @@
+import {openFullScreenPhoto} from './full-screen-photo.js';
+
 const sectionPictures = document.querySelector('.pictures');
 const templatePicture = document.querySelector('#picture').content.querySelector('a');
 
@@ -15,7 +17,9 @@ function getPhotoElement(data){
 export function renderPhotos(photosArr){
   photosArr.forEach((photo) => {
     const filledPhoto = getPhotoElement(photo);
-    sectionPictures.appendChild(filledPhoto);
+    sectionPictures.appendChild(filledPhoto).addEventListener('click', () => {
+      openFullScreenPhoto(photo);
+    });;
   });
 }
 
