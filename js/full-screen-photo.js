@@ -1,32 +1,30 @@
 import {photosData} from './data.js';
+
 const keyCodeEsc = 27;
 const sectionFullSizePictures = document.querySelector('.big-picture');
 const showBigPhoto = sectionFullSizePictures.querySelector('.big-picture__img');
 const bigPictureCancel = sectionFullSizePictures.querySelector('.big-picture__cancel');
 const body = document.querySelector('body');
 
-function closeFullScreenPhoto(){
+function closeFullScreenPhoto() {
   sectionFullSizePictures.classList.add('hidden');
   body.classList.remove('modal-open');
 }
 
 function generateComments(smallPhoto) {
-  return `<li class="social__comment">
-  <img
-      class="social__picture"
-      src="${smallPhoto.comments[0].avatar}"
-      alt="${smallPhoto.comments[0].name}"
-      width="35" height="35">
-  <p class="social__text">${smallPhoto.comments[0].message}</p>
-  </li>
-<li class="social__comment">
-  <img
-      class="social__picture"
-      src="${smallPhoto.comments[1].avatar}"
-      alt="${smallPhoto.comments[1].name}"
-      width="35" height="35">
-  <p class="social__text">${smallPhoto.comments[1].message}</p>
-  </li>`;
+  const numberComments = smallPhoto.comments.length;
+  let comments = '';
+  for (let i = 0; i < numberComments; i++) {
+    comments += `<li class="social__comment">
+     <img
+ class="social__picture"
+   src="${smallPhoto.comments[i].avatar}"
+   alt="${smallPhoto.comments[i].name}"
+   width="35" height="35">
+     <p class="social__text">${smallPhoto.comments[i].message}</p>
+     </li>`;
+  }
+  return comments;
 }
 
 export function openFullScreenPhoto(smallPhoto) {
@@ -40,11 +38,11 @@ export function openFullScreenPhoto(smallPhoto) {
   sectionFullSizePictures.querySelector('.social__comment-count').classList.add('hidden');
   sectionFullSizePictures.querySelector('.comments-loader').classList.add('hidden');
   body.classList.add('modal-open');
-  const onButtonClose = ()=>{
+  const onButtonClose = () => {
     closeFullScreenPhoto();
   };
   bigPictureCancel.addEventListener('click', onButtonClose);
-  const onKeyCodeEsc = (event)=>{
+  const onKeyCodeEsc = (event) => {
     if (event.keyCode === keyCodeEsc) {
       closeFullScreenPhoto();
     }
@@ -52,9 +50,9 @@ export function openFullScreenPhoto(smallPhoto) {
   document.addEventListener('keydown', onKeyCodeEsc);
 }
 
-const onSectionPicturesClick = (event)=>{
+const onSectionPicturesClick = (event) => {
   const photoId = event.target.closest('.picture').id;
-  const photoDataObj = photosData.find((photo) => +photo.id === +photoId );
+  const photoDataObj = photosData.find((photo) => +photo.id === +photoId);
   openFullScreenPhoto(photoDataObj);
 };
 addEventListener('click', onSectionPicturesClick);
