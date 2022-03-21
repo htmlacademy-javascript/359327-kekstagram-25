@@ -28,13 +28,8 @@ function getArrayRandomAvatar(elements) {
 }
 
 function getArrayRandomMessage(elements) {
-  const numberMessages = getRandomIntInclusive(1, 2);
-  const randomArrayElement1 = getRandomIntInclusive(0, elements.length - 1);
-  const randomArrayElement2 = getRandomIntInclusive(0, elements.length - 1);
-  if (numberMessages === 1) {
-    return elements[randomArrayElement1];
-  }
-  return `${elements[randomArrayElement1]} \n ${elements[randomArrayElement2]}`;
+  const randomArrayElement = getRandomIntInclusive(0, elements.length - 1);
+  return `${elements[randomArrayElement]}`;
 }
 
 function getArrayRandomElement(elements) {
@@ -49,6 +44,12 @@ function createPhoto() {
     description: DESCPTION_PHOTO,
     likes: getRandomIntInclusive(MIN_LIKES, MAX_LIKES),
     comments: [
+      {
+        id: getIdComments(),
+        avatar: getArrayRandomAvatar(AVATARS),
+        message: getArrayRandomMessage(MESSAGES),
+        name: getArrayRandomElement(NAMES),
+      },
       {
         id: getIdComments(),
         avatar: getArrayRandomAvatar(AVATARS),

@@ -18,6 +18,14 @@ function generateComments(smallPhoto) {
       alt="${smallPhoto.comments[0].name}"
       width="35" height="35">
   <p class="social__text">${smallPhoto.comments[0].message}</p>
+  </li>
+<li class="social__comment">
+  <img
+      class="social__picture"
+      src="${smallPhoto.comments[1].avatar}"
+      alt="${smallPhoto.comments[1].name}"
+      width="35" height="35">
+  <p class="social__text">${smallPhoto.comments[1].message}</p>
   </li>`;
 }
 
