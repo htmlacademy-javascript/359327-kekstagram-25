@@ -23,8 +23,8 @@ function getIdComments() {
 }
 
 function getArrayRandomAvatar(elements) {
-  const result = getRandomIntInclusive(1, elements.length + 1);
-  return `img/avatar-${result}.svg`;
+  const result = getRandomIntInclusive(0, elements.length - 1);
+  return `img/avatar-${elements[result]}.svg`;
 }
 
 function getArrayRandomMessage(elements) {
@@ -41,7 +41,6 @@ function getArrayRandomElement(elements) {
   const randomResult = getRandomIntInclusive(0, elements.length - 1);
   return elements[randomResult];
 }
-
 
 function createPhoto() {
   return {
@@ -64,3 +63,5 @@ function createPhoto() {
 export function getPhotosArr (number){
   return  new Array(number).fill(null).map(() => createPhoto());
 }
+
+export const photosData = getPhotosArr(25);
