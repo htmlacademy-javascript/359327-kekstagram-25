@@ -1,4 +1,5 @@
 import {renderPhotos} from './rendering-thumbnails.js';
-import {getPhotosArr} from './data.js';
+import {photosData} from './data.js';
+import './full-screen-photo.js';
 
-renderPhotos(getPhotosArr(25));
+renderPhotos(photosData);

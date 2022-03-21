@@ -23,25 +23,19 @@ function getIdComments() {
 }
 
 function getArrayRandomAvatar(elements) {
-  const result = getRandomIntInclusive(1, elements.length + 1);
-  return `img/avatar-${result}.svg`;
+  const result = getRandomIntInclusive(0, elements.length - 1);
+  return `img/avatar-${elements[result]}.svg`;
 }
 
 function getArrayRandomMessage(elements) {
-  const numberMessages = getRandomIntInclusive(1, 2);
-  const randomArrayElement1 = getRandomIntInclusive(0, elements.length - 1);
-  const randomArrayElement2 = getRandomIntInclusive(0, elements.length - 1);
-  if (numberMessages === 1) {
-    return elements[randomArrayElement1];
-  }
-  return `${elements[randomArrayElement1]} \n ${elements[randomArrayElement2]}`;
+  const randomArrayElement = getRandomIntInclusive(0, elements.length - 1);
+  return `${elements[randomArrayElement]}`;
 }
 
 function getArrayRandomElement(elements) {
   const randomResult = getRandomIntInclusive(0, elements.length - 1);
   return elements[randomResult];
 }
-
 
 function createPhoto() {
   return {
@@ -56,6 +50,12 @@ function createPhoto() {
         message: getArrayRandomMessage(MESSAGES),
         name: getArrayRandomElement(NAMES),
       },
+      {
+        id: getIdComments(),
+        avatar: getArrayRandomAvatar(AVATARS),
+        message: getArrayRandomMessage(MESSAGES),
+        name: getArrayRandomElement(NAMES),
+      },
     ],
   };
 }
@@ -64,3 +64,5 @@ function createPhoto() {
 export function getPhotosArr (number){
   return  new Array(number).fill(null).map(() => createPhoto());
 }
+
+export const photosData = getPhotosArr(25);

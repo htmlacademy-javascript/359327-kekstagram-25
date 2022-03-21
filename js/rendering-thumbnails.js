@@ -9,6 +9,7 @@ function getPhotoElement(data){
   img.setAttribute('src', data.url);
   pictureLikes.textContent = data.likes;
   pictureComments.textContent = data.comments[0].id;
+  photoElement.setAttribute('id', data.id);
   return photoElement;
 }
 
