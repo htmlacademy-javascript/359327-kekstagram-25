@@ -21,9 +21,18 @@ const onKeyCodeEsc = (event) => {
   }
 };
 
+export const onSectionPicturesClick = (event) => {
+  const photoId = event.target.closest('.picture').id ;
+  const photoDataObj = photosData.find((photo) => +photo.id === +photoId);
+  openFullScreenPhoto(photoDataObj);
+};
+
 function closeFullScreenPhoto() {
   sectionFullSizePictures.classList.add('hidden');
   body.classList.remove('modal-open');
+  document.addEventListener('click', onSectionPicturesClick);
+  bigPictureCancel.removeEventListener('click', onButtonClose);
+  document.removeEventListener('keydown', onKeyCodeEsc);
 }
 
 function generateComments(smallPhoto) {
@@ -55,11 +64,8 @@ export function openFullScreenPhoto(smallPhoto) {
   body.classList.add('modal-open');
   bigPictureCancel.addEventListener('click', onButtonClose);
   document.addEventListener('keydown', onKeyCodeEsc);
+  document.removeEventListener('click',onSectionPicturesClick);
 }
 
-const onSectionPicturesClick = (event) => {
-  const photoId = event.target.closest('.picture').id;
-  const photoDataObj = photosData.find((photo) => +photo.id === +photoId);
-  openFullScreenPhoto(photoDataObj);
-};
-addEventListener('click', onSectionPicturesClick);
+document.addEventListener('click', onSectionPicturesClick);
+
